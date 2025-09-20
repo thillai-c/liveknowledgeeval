@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Github, Database, Trophy, ArrowRight } from 'lucide-react';
+import { FileText, Github, Trophy, ArrowRight } from 'lucide-react';
 
 const Hero = () => {
   const containerVariants = {
@@ -88,17 +88,6 @@ const Hero = () => {
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </motion.a>
             
-            <motion.a
-              href="#"
-              className="btn btn-outline group"
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <Database size={20} />
-              Data
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </motion.a>
             
             <motion.a
               href="#leaderboard"

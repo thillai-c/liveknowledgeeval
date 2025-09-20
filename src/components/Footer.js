@@ -78,11 +78,6 @@ const Footer = () => {
               </li>
               <li>
                 <button className="text-gray-400 hover:text-white transition-colors">
-                  Dataset
-                </button>
-              </li>
-              <li>
-                <button className="text-gray-400 hover:text-white transition-colors">
                   Documentation
                 </button>
               </li>
