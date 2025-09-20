@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Github, ExternalLink } from 'lucide-react';
+import { Heart, ExternalLink } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -30,23 +30,32 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#overview" className="text-gray-400 hover:text-white transition-colors">
+                <button 
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Overview
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#leaderboard" className="text-gray-400 hover:text-white transition-colors">
+                <button 
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Leaderboard
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#usage" className="text-gray-400 hover:text-white transition-colors">
+                <button 
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
                   Usage
-                </a>
+                </button>
               </li>
               <li>
                 <a 
-                  href="https://github.com/<your-org>/kode.git" 
+                  href="https://github.com/yourusername/okbench-react" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors flex items-center gap-1"
@@ -63,24 +72,24 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <button className="text-gray-400 hover:text-white transition-colors">
                   Paper
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <button className="text-gray-400 hover:text-white transition-colors">
                   Dataset
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <button className="text-gray-400 hover:text-white transition-colors">
                   Documentation
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <button className="text-gray-400 hover:text-white transition-colors">
                   Cite
-                </a>
+                </button>
               </li>
             </ul>
           </div>

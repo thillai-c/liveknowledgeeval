@@ -3,19 +3,8 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Trophy, Calendar, TrendingUp, Award, ArrowUpDown, ArrowUp, ArrowDown } from 'lucide-react';
 
-const Leaderboard = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1
-  });
-
-  const [selectedDate, setSelectedDate] = useState('2025-06-07');
-  const [sortConfig, setSortConfig] = useState({
-    key: 'oracle_acc',
-    direction: 'desc'
-  });
-
-  const leaderboardData = {
+// Move data outside component to prevent re-creation on every render
+const leaderboardData = {
     '2025-06-07': [
       {"model": "gemma-3-1b-it", "no_context_acc": 29.93, "oracle_acc": 61.86, "date": "2025-06-07"},
       {"model": "gemma-3-4b-it", "no_context_acc": 44.80, "oracle_acc": 95.80, "date": "2025-06-07"},
@@ -70,6 +59,18 @@ const Leaderboard = () => {
     ]
   };
 
+const Leaderboard = () => {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
+
+  const [selectedDate, setSelectedDate] = useState('2025-06-07');
+  const [sortConfig, setSortConfig] = useState({
+    key: 'oracle_acc',
+    direction: 'desc'
+  });
+
   const sortedData = useMemo(() => {
     const data = leaderboardData[selectedDate] || [];
     return [...data].sort((a, b) => {
@@ -90,7 +91,7 @@ const Leaderboard = () => {
       }
       return 0;
     });
-  }, [selectedDate, leaderboardData, sortConfig]);
+  }, [selectedDate, sortConfig]);
 
   const handleSort = (key) => {
     setSortConfig(prevConfig => ({

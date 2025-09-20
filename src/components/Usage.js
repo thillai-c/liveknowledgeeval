@@ -6,14 +6,12 @@ import {
   Download, 
   Code, 
   FileText, 
-  Settings, 
   CheckCircle, 
   Copy, 
   ExternalLink,
   Terminal,
   Database,
-  Filter,
-  Hash
+  Filter
 } from 'lucide-react';
 
 const Usage = () => {
