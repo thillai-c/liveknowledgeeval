@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FileText, Github, Trophy, ArrowRight } from 'lucide-react';
 
-const Hero = () => {
+const Hero = ({ onTabChange }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -89,8 +89,8 @@ const Hero = () => {
             </motion.a>
             
             
-            <motion.a
-              href="#leaderboard"
+            <motion.button
+              onClick={() => onTabChange('leaderboard')}
               className="btn btn-outline group"
               variants={buttonVariants}
               whileHover="hover"
@@ -99,7 +99,7 @@ const Hero = () => {
               <Trophy size={20} />
               Leaderboard
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </motion.a>
+            </motion.button>
           </motion.div>
 
           {/* Key Features */}

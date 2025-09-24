@@ -108,14 +108,22 @@ const Overview = () => {
 
   const qaExamples = [
     {
-      question: 'As of February 26, 2025, what percentage of GDP has UK Prime Minister Keir Starmer announced the country will spend on defense?',
-      choices: ['A. 2.3% of its GDP', 'B. 3% of its GDP', 'C. 2.5% of its GDP', 'D. 7% of its GDP'],
-      answer: 'C. 2.5% of its GDP'
+      generationDate: '2025-09-22',
+      question: 'On September 22, 2025, which U.S. state revised its consumer privacy regulations to include rules on automated decision-making, risk assessment, and cybersecurity audits?',
+      choices: ['A. New York', 'B. California', 'C. Texas', 'D. Florida'],
+      answer: 'B. California'
     },
     {
-      question: 'On February 14, 2025, at which hospital was Pope Francis hospitalized for a respiratory infection?',
-      choices: ['A. St. Peter\'s Hospital', 'B. Vatican Medical Center', 'C. Gemelli Hospital', 'D. Apostolic Palace Clinic'],
-      answer: 'C. Gemelli Hospital'
+      generationDate: '2025-09-19',
+      question: 'As of September 19, 2025, what is the new minimum payment required when filing an H-1B petition for certain foreign workers under U.S. restrictions?',
+      choices: ['A. $10,000', 'B. $50,000', 'C. $100,000', 'D. $150,000'],
+      answer: 'C. $100,000'
+    },
+    {
+      generationDate: '2025-09-16',
+      question: 'Which tech company announced a $30 billion investment in the U.K. focused on AI, cloud, and infrastructure?',
+      choices: ['A. Google', 'B. Amazon', 'C. Microsoft', 'D. Apple'],
+      answer: 'C. Microsoft'
     }
   ];
 
@@ -274,9 +282,14 @@ const Overview = () => {
                 whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.2 }}
               >
-                <p className="font-semibold text-gray-800 mb-4">
-                  <strong>Question:</strong> {example.question}
-                </p>
+                <div className="mb-4">
+                  <span className="inline-block bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full mb-3">
+                    Generated: {example.generationDate}
+                  </span>
+                  <p className="font-semibold text-gray-800">
+                    <strong>Question:</strong> {example.question}
+                  </p>
+                </div>
                 <div className="grid grid-cols-2 gap-2 mb-4">
                   {example.choices.map((choice, choiceIndex) => (
                     <div key={choiceIndex} className="bg-white p-3 rounded border border-gray-200 text-sm">

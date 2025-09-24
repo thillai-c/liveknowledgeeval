@@ -43,27 +43,15 @@ const Usage = () => {
 
   const codeExamples = [
     {
-      title: 'Basic Usage',
-      code: `python main.py --date 2025-06-07 --api_key YOUR_OPENAI_API_KEY`,
-      description: 'Generate a benchmark for a specific date with your OpenAI API key'
-    },
-    {
-      title: 'With LLM Judge Filtering',
-      code: `python main.py \\
-    --date 2025-06-07 \\
-    --api_key YOUR_OPENAI_API_KEY \\
-    --use_llm_judge \\
-    --llm_judge_model gpt-4.1-2025-04-14`,
-      description: 'Enable LLM judge filtering for higher quality questions'
-    },
-    {
-      title: 'Custom Model',
+      title: 'Standard Usage',
       code: `python main.py \\
     --date 2025-06-07 \\
     --api_key YOUR_OPENAI_API_KEY \\
     --model gpt-4o \\
-    --version 0`,
-      description: 'Use a custom model and prompt template version'
+    --version 0 \\
+    --use_llm_judge \\
+    --llm_judge_model gpt-4.1-2025-04-14`,
+      description: 'Use a custom model and prompt template version with integrated filtering'
     }
   ];
 
@@ -94,12 +82,7 @@ conda activate kode`,
     {
       icon: Code,
       title: 'Generates dataset',
-      description: 'Creates QA pairs using your specified model'
-    },
-    {
-      icon: Filter,
-      title: 'Optional filtering',
-      description: 'Uses LLM judge to filter high-quality questions'
+      description: 'Creates QA pairs using your specified model with integrated LLM judge filtering'
     }
   ];
 
@@ -108,15 +91,12 @@ conda activate kode`,
     { arg: '--api_key', description: 'Your OpenAI API key (required)' },
     { arg: '--model', description: 'OpenAI model for QA generation (default: gpt-4.1-2025-04-14)' },
     { arg: '--version', description: 'Prompt template version (default: 0)' },
-    { arg: '--use_llm_judge', description: 'Enable LLM judge filtering (optional)' },
+    { arg: '--use_llm_judge', description: 'Enable LLM judge filtering (required for quality assurance)' },
     { arg: '--llm_judge_model', description: 'Model for judge filtering (default: gpt-4.1-2025-04-14)' }
   ];
 
   const outputFiles = [
-    { file: 'all_news/news_2025-06-07.json', description: 'Raw news articles' },
-    { file: '2025-06-07_final_output_v0.json', description: 'Raw generated QAs' },
-    { file: '2025-06-07_transformed_v0.json', description: 'Post-processed dataset with signature' },
-    { file: '2025-06-07_filtered_by_llm_judge_v0.json', description: 'Filtered dataset (if using judge)' }
+    { file: '2025-06-07_filtered_by_llm_judge_v0.json', description: 'Final filtered dataset with high-quality questions for different dates' }
   ];
 
   const copyToClipboard = async (code, title) => {
@@ -193,7 +173,7 @@ conda activate kode`,
 
         {/* Code Examples */}
         <div className="space-y-6">
-          <h4 className="text-xl font-semibold text-gray-800 mb-4">1 · Generate Dataset (Single Command)</h4>
+          <h4 className="text-xl font-semibold text-gray-800 mb-4">1 · Generate Dataset</h4>
           <p className="text-gray-700 mb-6">
             The unified <code className="bg-gray-100 px-2 py-1 rounded text-sm">main.py</code> script handles everything automatically:
           </p>
@@ -223,28 +203,6 @@ conda activate kode`,
         </div>
       </motion.section>
 
-      {/* What it does automatically */}
-      <motion.section variants={itemVariants} className="card">
-        <h3 className="text-2xl font-bold text-gray-800 mb-6">What it does automatically:</h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg"
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                <feature.icon className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1">{feature.title}</h4>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
 
       {/* Arguments */}
       <motion.section variants={itemVariants} className="card">

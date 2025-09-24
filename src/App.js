@@ -41,7 +41,7 @@ function App() {
       />
       
       <main className="pt-20">
-        {activeTab === 'overview' && <Hero />}
+        {activeTab === 'overview' && <Hero onTabChange={setActiveTab} />}
         
         <div className="container mx-auto px-4 py-8">
           <AnimatePresence mode="wait">
